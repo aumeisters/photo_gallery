@@ -1,0 +1,44 @@
+@media only screen and (max-width: 1150px) {
+	header h1 {
+		font-size: 72px;
+		color: rgb(61, 88, 125);
+	}
+	.gallery, .footer, header {
+		height: auto;
+	}
+	.gallery_pictures {
+		flex-flow: column;
+	}
+	.gallery_picture {
+		flex: 0 0 100%;
+	}
+	.gallery_picture:hover {
+		transform: none;
+	}
+	.photo_menu_options {
+		justify-content: center;
+	}
+	.photo_menu_options div {
+		margin: 100% 0;
+	}
+
+}
+@media only screen and (max-width: 950px) {
+	.gallery, .footer, header {
+		margin: 0;
+	}
+	header h1 {
+		font-size: 68px;
+	}
+}
+@media only screen and (max-width: 620px) {
+	header h1 {
+		font-size: 64px;
+	}
+
+}
+@media only screen and (max-width: 500px) {
+
+}
+
+
