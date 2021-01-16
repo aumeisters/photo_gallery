@@ -92,7 +92,7 @@ header h1 {
 }
 .gallery_picture:hover {
 	transform: scale(1.3);
-	transition: 1s ease;
+	transition: 0.3s ease;
 }
 .gallery_picture img {
 	width: 100%;
@@ -134,10 +134,10 @@ header h1 {
 
 }
 .photo_menu_options_close svg,.photo_menu_options_download svg,.photo_menu_options_openFullsize svg {
-	transition:  1s ease;
+	transition:  0.3s ease;
 }
 .photo_menu_options_close svg:hover,.photo_menu_options_download svg:hover,.photo_menu_options_openFullsize svg:hover {
-	transition: 1s ease;
+	transition: 0.3s ease;
 	transform: scale(1.2);
 }
 .photo_menu_options {
