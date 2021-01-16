@@ -6,10 +6,8 @@ window.addEventListener('resize', () => {
 	screenWidth = window.innerWidth;
 });	
 // open picture view (slideShow) sea pictures, wood pictures gallery if screen is big enought
-if (screenWidth > 1150) {
-	slideShow('.gallery_sea img');
-	slideShow('.gallery_wood img');
-}
+slideShow('.gallery_sea img');
+slideShow('.gallery_wood img');
 // side whitespace colorchange by scrolling
 document.addEventListener('scroll', () => {
 	// top is scrool distance from the top
@@ -56,65 +54,67 @@ function slideShow(gallerySelector) {
 		let pictures = document.querySelectorAll(`${gallerySelector}`);
 		pictures.forEach( e => {
 			e.addEventListener('click', e => {
-				document.querySelector('.photo_view').style.display = 'block';
-				document.querySelector('.photo_menu').style.display = 'flex';
-				let fullSizeSource = e.target.dataset.original;
-				let previewSizeSource = e.target.dataset.preview;
-				document.querySelector('.photo_menu_view').style.backgroundImage = `url(${previewSizeSource})`;
-				let sourceArrayMid = [];
-				let sourceArrayOrig = [];
-				pictures.forEach(e => {
-					sourceArrayMid.push(e.attributes[2].textContent);
-				});
-				pictures.forEach(e => {
-					sourceArrayOrig.push(e.attributes[1].textContent);
-				});
-				let pictureIndex = sourceArrayMid.indexOf(previewSizeSource);
-				// download button in photo view options so that when we open an image href is filled
-				function fillImagesHref() {
-					document.querySelector('.photo_menu_options a').href = `${sourceArrayOrig[pictureIndex]}`;
-				}
-				fillImagesHref();
-				// slideshow left button swith on click
-				document.querySelector('.photo_menu_left_button').addEventListener('click', () => {
-					pictureIndex--;
-					if (pictureIndex == -1) {
-						pictureIndex = (sourceArrayMid.length - 1);
-					};
-					document.querySelector('.photo_menu_view').style.backgroundImage = `url(${sourceArrayMid[pictureIndex]})`;
-					fillImagesHref()
-				});
-				// slideshow right button swith on click
-				document.querySelector('.photo_menu_right_button').addEventListener('click', () => {
-					pictureIndex++;
-					if (pictureIndex == (sourceArrayMid.length)) {
-						pictureIndex = 0;
+				if (screenWidth > 1150) {
+					document.querySelector('.photo_view').style.display = 'block';
+					document.querySelector('.photo_menu').style.display = 'flex';
+					let fullSizeSource = e.target.dataset.original;
+					let previewSizeSource = e.target.dataset.preview;
+					document.querySelector('.photo_menu_view').style.backgroundImage = `url(${previewSizeSource})`;
+					let sourceArrayMid = [];
+					let sourceArrayOrig = [];
+					pictures.forEach(e => {
+						sourceArrayMid.push(e.attributes[2].textContent);
+					});
+					pictures.forEach(e => {
+						sourceArrayOrig.push(e.attributes[1].textContent);
+					});
+					let pictureIndex = sourceArrayMid.indexOf(previewSizeSource);
+					// download button in photo view options so that when we open an image href is filled
+					function fillImagesHref() {
+						document.querySelector('.photo_menu_options a').href = `${sourceArrayOrig[pictureIndex]}`;
 					}
-					document.querySelector('.photo_menu_view').style.backgroundImage = `url(${sourceArrayMid[pictureIndex]})`;
-					fillImagesHref()
-				});
-				// slideshow swith on arrows
-				document.addEventListener('keydown', (e) => {
-					if (e.key == "ArrowLeft") {
+					fillImagesHref();
+					// slideshow left button swith on click
+					document.querySelector('.photo_menu_left_button').addEventListener('click', () => {
 						pictureIndex--;
 						if (pictureIndex == -1) {
 							pictureIndex = (sourceArrayMid.length - 1);
-						}
+						};
 						document.querySelector('.photo_menu_view').style.backgroundImage = `url(${sourceArrayMid[pictureIndex]})`;
-					} else if (e.key == "ArrowRight") {
+						fillImagesHref()
+					});
+					// slideshow right button swith on click
+					document.querySelector('.photo_menu_right_button').addEventListener('click', () => {
 						pictureIndex++;
 						if (pictureIndex == (sourceArrayMid.length)) {
 							pictureIndex = 0;
 						}
 						document.querySelector('.photo_menu_view').style.backgroundImage = `url(${sourceArrayMid[pictureIndex]})`;
-					};
-					fillImagesHref()
-				});
-				// open in a full size button in photo view options
-				document.querySelector('.photo_menu_options_openFullsize svg').addEventListener('click', () => {
-					let URL = window.location.href;
-					openFullPicture(`${URL}/${sourceArrayOrig[pictureIndex]}`)
-				});
+						fillImagesHref()
+					});
+					// slideshow swith on arrows
+					document.addEventListener('keydown', (e) => {
+						if (e.key == "ArrowLeft") {
+							pictureIndex--;
+							if (pictureIndex == -1) {
+								pictureIndex = (sourceArrayMid.length - 1);
+							}
+							document.querySelector('.photo_menu_view').style.backgroundImage = `url(${sourceArrayMid[pictureIndex]})`;
+						} else if (e.key == "ArrowRight") {
+							pictureIndex++;
+							if (pictureIndex == (sourceArrayMid.length)) {
+								pictureIndex = 0;
+							}
+							document.querySelector('.photo_menu_view').style.backgroundImage = `url(${sourceArrayMid[pictureIndex]})`;
+						};
+						fillImagesHref()
+					});
+					// open in a full size button in photo view options
+					document.querySelector('.photo_menu_options_openFullsize svg').addEventListener('click', () => {
+						let URL = window.location.href;
+						openFullPicture(`${URL}/${sourceArrayOrig[pictureIndex]}`)
+					});
+				};
 			});
 		});
 };
