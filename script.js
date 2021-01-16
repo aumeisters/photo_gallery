@@ -113,7 +113,7 @@ function slideShow(gallerySelector) {
 				// open in a full size button in photo view options
 				document.querySelector('.photo_menu_options_openFullsize svg').addEventListener('click', () => {
 					let URL = window.location.href;
-					openFullPicture(`${URL.slice(0,(URL.length - 10))}${sourceArrayOrig[pictureIndex]}`)
+					openFullPicture(`${URL}/${sourceArrayOrig[pictureIndex]}`)
 				});
 			});
 		});
