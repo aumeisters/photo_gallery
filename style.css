@@ -157,3 +157,6 @@ header h1 {
 	justify-content: space-around;
 	margin-left: 1%;
 }
+footer p {
+	user-select: none;
+}
