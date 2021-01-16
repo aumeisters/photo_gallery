@@ -132,13 +132,22 @@ header h1 {
 	color: #faffff;
 	align-self: center;
 	cursor: pointer;
-
+	transition:  0.3s ease;
+	border-radius: 50px;
+	opacity: 1;
+	padding: 20px 0;
 }
-.photo_menu_options_close svg,.photo_menu_options_download svg,.photo_menu_options_openFullsize svg {
+.photo_menu_left_button:active,.photo_menu_right_button:active {
+	transition:  0.3s ease;
+	background-color: #faffff;
+	opacity: 0.5;
+}
+.photo_menu_options_close,.photo_menu_options_download,.photo_menu_options_openFullsize {
 	transition:  0.3s ease;
 	cursor: pointer;
 }
-.photo_menu_options_close svg:hover,.photo_menu_options_download svg:hover,.photo_menu_options_openFullsize svg:hover {
+.photo_menu_options_close:hover,.photo_menu_options_download:hover,
+.photo_menu_options_openFullsize:hover,.photo_menu_left_button:hover,.photo_menu_right_button:hover {
 	transition: 0.3s ease;
 	transform: scale(1.2);
 }
