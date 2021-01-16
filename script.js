@@ -6,8 +6,10 @@ window.addEventListener('resize', () => {
 	screenWidth = window.innerWidth;
 });	
 // open picture view (slideShow) sea pictures, wood pictures gallery if screen is big enought
-slideShow('.gallery_sea img');
-slideShow('.gallery_wood img');
+if (screenWidth > 1150) {
+	slideShow('.gallery_sea img');
+	slideShow('.gallery_wood img');
+}
 // side whitespace colorchange by scrolling
 document.addEventListener('scroll', () => {
 	// top is scrool distance from the top
